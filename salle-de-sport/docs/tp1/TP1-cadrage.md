@@ -114,56 +114,58 @@ Autre notion difficile à mesurer : **« bon client »** (S6), qui n'a aucune d�
 
 ## 3. Exigences
 
-### Q7 — Tableau des exigences
+### Q7 — Exigences possibles et traçabilité
 
-| ID | Exigence | Type (F / NF) | Source |
-|---|---|---|---|
-| REQ-F-01 | Le système doit permettre à un adhérent de consulter son abonnement. | F | S2 |
-| REQ-F-02 | Le système doit permettre à un adhérent de renouveler son abonnement. | F | S2 |
-| REQ-F-03 | Le système doit refuser l'accès à un adhérent dont l'abonnement n'est pas valable. | F | S3, S5 |
-| REQ-F-04 | Le système doit permettre au gérant de suivre la fréquentation de la salle. | F | S4 |
-| REQ-F-05 | Le système doit permettre au gérant de gérer les formules d'abonnement. | F | S4 — *exigence initiale, trop ambiguë pour être finale (PO-02)* |
-| REQ-NF-01 | Le système doit être moderne et agréable à utiliser. | NF | S10 — *non vérifiable en l'état (PO-10)* |
+| ID | Exigence | Type | Source | Appréciation |
+|---|---|---|---|---|
+| REQ-F-01 | Le système doit permettre à un adhérent de consulter son abonnement. | F | S2 : « Les adhérents doivent pouvoir consulter leur abonnement… » | Acceptable. |
+| REQ-F-02 | Le système doit permettre à un adhérent de renouveler son abonnement. | F | S2 : « …et le renouveler » | Acceptable. Le paiement n'est pas précisé (PO-06). |
+| REQ-F-03 | Le système doit refuser l'accès à un adhérent dont l'abonnement n'est pas valable. | F | S3, S5 : « Un adhérent ne doit pas pouvoir entrer si son abonnement n'est pas valable. » | Acceptable, mais « valable » doit être défini (PO-13). |
+| REQ-F-04 | Le système doit permettre au gérant de suivre la fréquentation de la salle. | F | S4 : « …suivre la fréquentation de la salle. » | Acceptable comme exigence initiale. Les indicateurs sont à préciser (PO-07). |
+| REQ-F-05 | Le système doit permettre au gérant de gérer les formules d'abonnement. | F | S4 : « Le gérant veut gérer les formules d'abonnement… » | Acceptable comme exigence initiale, mais trop ambiguë pour être finale (PO-02). |
+| REQ-F-06 | Le système doit permettre à un adhérent qui part en voyage de ne pas perdre les jours payés de son abonnement. | F | S2 : « …ceux qui partent en voyage ne veulent pas perdre les jours payés. » | Acceptable comme exigence initiale, mais le mécanisme est inconnu (PO-01). |
+| REQ-F-07 | Le système doit autoriser l'accès à un bon client dont l'abonnement vient de finir. | F | S6 : « Il ne faut pas non plus bloquer à la porte un bon client dont l'abonnement vient de finir. » | À raffiner : « bon client » et « vient de finir » ne sont pas définis (PO-03). À rendre cohérente avec REQ-F-03 une fois « valable » défini (PO-13). |
+| REQ-F-08 | Le système doit permettre de sanctionner un adhérent qui prête sa carte à un tiers. | F | S7 : « Certains adhérents prêtent leur carte à des amis : il faut les sanctionner. » | Trop ambiguë : détection et sanction non définies (PO-04). |
+| REQ-NF-01 | Le système doit être moderne. | NF | S10 : « L'application doit être moderne et agréable. » | Besoin initial à raffiner, non vérifiable en l'état (PO-10). |
+| REQ-NF-02 | Le système doit être agréable à utiliser. | NF | S10 | Même remarque (PO-10). |
 
-**Vérification :** chaque exigence commence par « Le système doit… », n'exprime qu'une seule idée et n'introduit aucune fonctionnalité non demandée.
-
-**Besoins exprimés par le client, volontairement non formalisés en exigences tant que les questions ne sont pas levées :**
+**Non formalisé en exigence : conflit entre deux parties prenantes**
 
 | Besoin exprimé | Raison | Point ouvert |
 |---|---|---|
-| Ne pas faire perdre les jours payés aux adhérents en voyage (S2) | Mécanisme inconnu : une exigence vérifiable serait inventée | PO-01 |
-| Ne pas bloquer un bon client dont l'abonnement vient de finir (S6) | « Bon client » et « vient de finir » non définis | PO-03 |
-| Sanctionner le prêt de carte (S7) | Détection et sanction non définies | PO-04 |
-| Arrêter les entrées avant la fermeture (S8, S9) | Conflit entre deux parties prenantes, heure inconnue | PO-05 |
+| Arrêter les entrées bien avant la fermeture (S8) et laisser entrer jusqu'à la dernière minute (S9) | Deux demandes contradictoires : l'une des deux exigences violerait le critère de cohérence, et l'heure limite est inconnue. | PO-05 |
 
-**Traçabilité minimale (besoin → objectif → exigence → source) :**
+**Traçabilité minimale (besoin → objectif → exigence → source)**
 
 | Besoin métier | Objectif | Exigence | Source |
 |---|---|---|---|
 | Empêcher les entrées indues | OBJ-01 | REQ-F-03 | S5 : « Un adhérent ne doit pas pouvoir entrer si son abonnement n'est pas valable. » |
-| Faciliter le suivi et le renouvellement par l'adhérent | OBJ-02 | REQ-F-01, REQ-F-02 | S2 |
-| Connaître la fréquentation | OBJ-03 | REQ-F-04 | S4 |
+| Empêcher l'usage de la carte d'un autre | OBJ-01 | REQ-F-08 | S7 : « Certains adhérents prêtent leur carte à des amis : il faut les sanctionner. » |
+| Faciliter le suivi et le renouvellement par l'adhérent | OBJ-02 | REQ-F-01, REQ-F-02, REQ-F-06 | S2 : « Les adhérents doivent pouvoir consulter leur abonnement et le renouveler… » |
+| Connaître la fréquentation | OBJ-03 | REQ-F-04 | S4 : « …suivre la fréquentation de la salle. » |
 
-### Q8 — Critique de REQ-F-06 et REQ-NF-02 (proposées par une autre équipe)
+### Q8 — Critique de REQ-F-06 et REQ-NF-02 
 
-| Exigence | Problème | Version corrigée / point ouvert |
+| Exigence | Problème | Réponse attendue |
 |---|---|---|
-| **REQ-F-06** — Le système doit permettre à l'administration de gérer les salles. | Le verbe « gérer » est ambigu : ajouter, modifier, supprimer, rendre indisponible, gérer la capacité ou les équipements ? Si on choisit une interprétation, on **invente** des fonctionnalités. | Ne pas inventer les opérations. Point ouvert à poser : « Quelles opérations doivent être incluses dans la gestion des salles ? » |
-| **REQ-NF-02** — L'application doit être accessible depuis un ordinateur et un smartphone. | La demande dit « un ordinateur **ou** un téléphone » : « et » change le sens (obligation d'être accessible sur les deux), et « smartphone » remplace « téléphone » sans validation. | « Le système doit être accessible depuis un ordinateur ou un téléphone. » À confirmer : doit-il fonctionner sur les deux ou sur l'un des deux au choix ? |
+| **REQ-F-06 (autre équipe)** — Le système doit permettre à l'administration de gérer les salles. | Le verbe « gérer » est ambigu : ajouter, modifier, supprimer, rendre indisponible, gérer la capacité ou les équipements ? Choisir une interprétation reviendrait à inventer des fonctionnalités. | Ne pas inventer les opérations. Poser la question au client : « Quelles opérations doivent être incluses dans la gestion des salles ? » |
+| **REQ-NF-02 (autre équipe)** — L'application doit être accessible depuis un ordinateur et un smartphone. | « Smartphone » remplace « téléphone » sans validation du client. Le « et » à la place de « ou » est aussi à confirmer. | « Le système doit être accessible depuis un ordinateur ou un téléphone. » À confirmer avec le client : les deux supports sont-ils obligatoires, ou l'un des deux au choix ? |
 
-**Transposition à notre sujet :** le même défaut existe pour REQ-F-05 (« gérer les formules d'abonnement », S4) — d'où PO-02. De plus, **notre demande ne mentionne aucun support** (ni ordinateur, ni téléphone) : toute exigence de type « accessible depuis smartphone » serait inventée, elle est donc traitée comme point ouvert PO-08.
+**Transposition à notre sujet :** le même défaut existe pour REQ-F-05 (« gérer les formules », PO-02). Notre demande ne mentionne aucun support : toute exigence d'accessibilité serait inventée, donc elle est traitée en point ouvert (PO-08).
 
-### Q9 — Pourquoi « simple à utiliser » (transposé : « moderne et agréable ») n'est pas vérifiable
+### Q9 — « Moderne et agréable » : pourquoi ce n'est pas vérifiable
 
-Notre demande ne contient pas « simple à utiliser » mais **« moderne et agréable » (S10)**, qui pose exactement le même problème : ces termes sont **subjectifs, non quantifiés et sans indicateur de mesure**. Deux personnes différentes peuvent juger différemment la même interface, et aucun test ne permet de dire que l'exigence est satisfaite.
+Notre demande ne contient pas « simple à utiliser », mais « moderne et agréable » (S10) pose le même problème. Ces termes sont **subjectifs, non quantifiés et sans indicateur de mesure** : deux personnes peuvent juger différemment la même interface, et aucun test ne permet de conclure que l'exigence est satisfaite.
 
-**Questions à poser au client (sans inventer de valeur cible) :**
+**Questions à poser au client:**
 
-1. Que signifie « moderne » pour vous : un exemple d'application ou d'interface qui vous plaît ?
+1. Que signifie « moderne » pour vous ? Avez-vous un exemple d'application qui vous plaît ?
 2. Qu'est-ce qui rendrait l'application « agréable » pour un adhérent ? Pour un agent d'accueil ?
-3. Quel temps maximum jugeriez-vous acceptable pour renouveler un abonnement ? Pour contrôler un adhérent à l'accueil ?
-4. L'application doit-elle pouvoir être utilisée sans formation, par un adhérent comme par un agent d'accueil ?
-5. Existe-t-il des critères d'ergonomie ou d'accessibilité imposés (lisibilité, langues, personnes en situation de handicap) ?
+3. Quel temps maximum est acceptable pour renouveler un abonnement ? Pour contrôler un adhérent à l'accueil ?
+4. Combien d'étapes maximum souhaitez-vous pour renouveler un abonnement ?
+5. Quel taux de réussite attendez-vous lors d'un test utilisateur ?
+6. Le système doit-il être utilisable sans formation, par un adhérent comme par un agent d'accueil ?
+7. Existe-t-il des critères d'accessibilité ou d'ergonomie imposés ?
 
 ---
 
