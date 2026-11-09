@@ -1,6 +1,6 @@
 # TP1 — Cadrage du projet
 
-**Équipe :** [noms des membres du groupe]
+**Équipe :** Touka Tammar, Syrine Guermazi, Dhouha Ben Rhouma, Roua Charfeddine
 **Sujet 5 — Salle de sport : abonnements et accès** (dossier du projet : `salle-de-sport/`)
 
 ---
