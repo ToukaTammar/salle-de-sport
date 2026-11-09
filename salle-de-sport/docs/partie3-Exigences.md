@@ -52,3 +52,5 @@ Notre demande ne contient pas « simple à utiliser », mais « moderne et agré
 5. Quel taux de réussite attendez-vous lors d'un test utilisateur ?
 6. Le système doit-il être utilisable sans formation, par un adhérent comme par un agent d'accueil ?
 7. Existe-t-il des critères d'accessibilité ou d'ergonomie imposés ?
+
+Les questions 3 à 6 sont propres à cette partie. Elles complètent la liste complète des questions client dans `questions-client.md`, qui renvoie à chaque point ouvert (PO).
