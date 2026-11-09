@@ -1,7 +1,5 @@
 # Questions pour le client — Sujet 5 « Salle de sport : abonnements et accès »
 
-*Envoyées à l'enseignant (qui joue le rôle du client) après le TP1. Les réponses seront remises au TP2. Chaque question renvoie au point ouvert (PO) correspondant dans `referentiel.md`.*
-
 ## Abonnements et renouvellement
 
 1. Quelles sont les formules d'abonnement existantes (durée, nombre de séances, plages horaires, tarifs) ? *(PO-02)*
